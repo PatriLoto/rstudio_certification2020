@@ -2,7 +2,7 @@
 
 ## Learner Persona
 
-** Una learner persona para caracterizar a una persona tipo destinataria de la presente lección.
+* Una learner persona para caracterizar a una persona tipo destinataria de la presente lección.
 
 ## Mapa Conceptual
 
