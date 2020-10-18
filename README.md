@@ -69,11 +69,11 @@ library(guaguas)
 ## Ejercicio: ¿Con cuál opción seleccionamos todas las variables de guaguas excepto el sexo y cantidad?
 ## Opciones:
 
-# a- guaguas %>% select(sexo, n)
+# a. guaguas %>% select(sexo, n)
 
-# b- guaguas %>% select(!c(sexo, n))   CORRECTA
+# b. guaguas %>% select(!c(sexo, n))   CORRECTA
 
-# - guaguas %>% select(guaguas, anio, nombre, proporcion)
+# C. guaguas %>% select(guaguas, anio, nombre, proporcion)
  
 ```
 
@@ -90,11 +90,11 @@ library(guaguas)
   ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
 ## Opciones: 
   
-guaguas %>% filter (name = "Salvador", anio >=1973)  
+a. guaguas %>% filter (name = "Salvador", anio >=1973)  
   
-guaguas %>% filter (anio >= 1973 & nombre == "Salvador") 
+b. guaguas %>% filter (anio >= 1973 & nombre == "Salvador")   CORRECTA
 
-guaguas %>% filter (nombre == "Salvador", anio == 1973)
+c. guaguas %>% filter (nombre == "Salvador", anio == 1973)
   
 ```
 
