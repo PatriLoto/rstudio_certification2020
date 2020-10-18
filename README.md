@@ -115,3 +115,10 @@ guaguas %>% ----(---, n, proporcion, anio) %>%
       
 ```
  #### Solución 3
+ 
+ ```r
+ 
+ guaguas %>% select(nombre, anio, n, proporcion) %>% 
+  filter(nombre == "Gabriela" ,anio > 1940) 
+  
+  ```
