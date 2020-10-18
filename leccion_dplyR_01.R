@@ -80,7 +80,7 @@ guaguas %>%
 guaguas %>% 
   select(-sexo, proporcion)  # también puede utilizarse el símbolo !
 
-## Ejercicio: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+## Consigna: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
 ## Opciones:
 
 guaguas %>% select(sexo, n)
@@ -102,11 +102,11 @@ guaguas %>% select(guaguas, anio, nombre, proporcion)
 
 ## reescribimos la sentencia utilizando pipe
 #dataset %>% 
-  ## filter(condicion1, condicion2,...condicionn)
+  ## filter(condicion1, condicion2,...condicion n)
 
 
 #dataset: conj. de datos sobre el que aplicaremos la función filter()
-#condciones1 a n: condiciones o test lógico para el filtrado de datos
+#condiciones1 a n: condiciones o test lógico para el filtrado de datos
 
 # Algunos operadores vistos en las clases anteriores que nos ayudarán 
 # ==
@@ -127,7 +127,7 @@ guaguas %>%
 # ! Ejemplo:	!A   evalúa --> ¿A no es cierto?
 
 
-## Ejercicio: En Chile un nombre muy popular es Salvador por Salvador Allende
+## Consigna: En Chile un nombre muy popular es Salvador por Salvador Allende
 ## ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
 ## Opciones: 
   
@@ -179,3 +179,5 @@ guaguas %>% select(nombre, anio, n, proporcion) %>%
 # Paquete guaguas desarrollado por Riva Quiroga: https://github.com/rivaquiroga/guaguas
 
 # Acceso: https://rstudio.cloud/project/1782608
+
+# Manipulación de datos: https://github.com/djnavarro/robust-tools/blob/master/static/dancing/index.Rmd
