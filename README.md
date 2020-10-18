@@ -37,8 +37,8 @@ Los estudiantes han visto en las clases anteriores manejo de la consola, vectore
 <img src="img/mapa_conceptual_4.png" width="1000" />
 
 
-## Material de la clase 🗂
- * **[Slides](https://github.com/PatriLoto/rstudio_certification2020/blob/master/presentacion_herramientas_utiles_para_manipulacion_datos.html)**
+## Material de la clase 🗂  https://data-datum.github.io/tidyr/clase.html#1
+ * **[Slides](https://PatriLoto/rstudio_certification2020/presentacion_herramientas_utiles_para_manipulacion_datos.html#1)**
  * **[Código](https://github.com/PatriLoto/rstudio_certification2020/blob/master/leccion_dplyR_01.R)** 
  * **[Proyecto de Rstudio cloud](https://rstudio.cloud/project/1782608)**
 
