@@ -33,7 +33,8 @@ Esta breve lección de 15 minutos es parte del módulo **Herramientas útiles pa
 
 Los estudiantes han visto en las clases anteriores manejo de la consola, vectores y operaciones, lectura de datos, el operador pipe, la función view, entre otros . 
 
-## Mapa conceptual 🗺️
+## [Mapa conceptual](https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/mapa_conceptual_dplyr3.png) 🗺️
+
 
 
 ## Material de la clase 🗂
