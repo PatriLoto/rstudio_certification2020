@@ -46,11 +46,11 @@ Los estudiantes han visto en las clases anteriores manejo de la consola, vectore
 * Guaguas
 
 ``` r
-# Instalación de las librerías
+# 1. Instalación de las librerías
 install.packages("tidyverse")
 devtools::install_github("rivaquiroga/guaguas")
 
-# Carga de las librerías
+# 2. Carga de las librerías
 library(tidyverse)
 library(guaguas)
 
@@ -59,8 +59,8 @@ library(guaguas)
 ## Evaluación formativa
 #### Ejercicio 1
 ``` r
-## Ejercicio: ¿Con cuál opción seleccionamos todas las variables de guaguas excepto el sexo y cantidad de ocurrencia de cada nombre?
-## Opciones:
+¿Con cuál opción seleccionamos todas las variables de guaguas excepto el sexo y cantidad de ocurrencia de cada nombre?
+ Opciones:
 
 a. guaguas %>% select(sexo, n)
 
@@ -79,7 +79,7 @@ b- guaguas %>% select(!c(sexo, n))   CORRECTA
 #### Ejercicio 2 
 
 ```r
-## Ejercicio: En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
+## En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
 ## Opciones: 
   
 a. guaguas %>% filter (name = "Salvador", anio >=1973)  
@@ -101,11 +101,12 @@ guaguas %>% filter (anio >= 1973 & nombre == "Salvador")
 #### Ejercicio 3
 
 ```r
-## Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas 
-## llamadas Gabriela, entonces:
+Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas 
+llamadas Gabriela, entonces:
 - es necesario seleccionar las variables de interés: nombre, cantidad, proporción y año
 - luego debemos filtrar por el nombre Gabriela a partir de 1940 hasta el año 2019 para comparar la ocurrencia de cada año
 Por favor, completa el ejercicio de acuerdo al objetivo planteado:
+
 
 guaguas %>% ----(---, n, proporcion, anio) %>% 
             -----(nombre == ---- ,---- > 1940)
