@@ -38,7 +38,7 @@ Los estudiantes han visto en las clases anteriores manejo de la consola, vectore
 
 
 ## Material de la clase 🗂
- * **Slides**
+ * **[Slides](https://github.com/PatriLoto/rstudio_certification2020/blob/master/presentacion_herramientas_utiles_para_manipulacion_datos.html)**
  * **[Código](https://github.com/PatriLoto/rstudio_certification2020/blob/master/leccion_dplyR_01.R)** 
  * **[Proyecto de Rstudio cloud](https://rstudio.cloud/project/1782608)**
 
