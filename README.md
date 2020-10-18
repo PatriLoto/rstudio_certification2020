@@ -16,7 +16,7 @@
 **Código**
 
 ## Ejercicios para la Evaluación formativa
-* Ejercicios del tipo pregunta de opción múltiple y del tipo fill_the_blanks.
+* Ejercicios del tipo pregunta de **opción múltiple** y **fill in the blanks**.
 
 ### Learner Persona 🙎‍♂️ 🙎‍♀️
 
@@ -40,54 +40,46 @@ Los estudiantes han visto en las clases anteriores manejo de la consola, vectore
  * **Slides**
  * **[Proyecto de Rstudio cloud](https://rstudio.cloud/project/1782608)**
 
-## Referencias 📚
-
-* [R para Ciencia de Datos de Hadley Wickham](https://es.r4ds.hadley.nz/)
-* [Documentación de dplyr](https://dplyr.tidyverse.org/)
-* [Primers de Rstudio](https://rstudio.cloud/learn/primers) 
-* [Paquete guaguas desarrollado por Riva Quiroga](https://github.com/rivaquiroga/guaguas)
-
 
 ### Librerias necesarias 
 * Tidyverse
 * Guaguas
 
 ``` r
-#Si no tengo instalada la libreria tidyverse
-#install.packages("tidyverse")
-#devtools::install_github("rivaquiroga/guaguas")
+# Instalación de las librerías
+install.packages("tidyverse")
+devtools::install_github("rivaquiroga/guaguas")
 
-#cargo librerias
+# Carga de las librerías
 library(tidyverse)
 library(guaguas)
 
 ```
 
 ## Evaluación formativa
-#### Pregunta 1
+#### Ejercicio 1
 ``` r
-## Ejercicio: ¿Con cuál opción seleccionamos todas las variables de guaguas excepto el sexo y cantidad?
+## Ejercicio: ¿Con cuál opción seleccionamos todas las variables de guaguas excepto el sexo y cantidad de ocurrencia de cada nombre?
 ## Opciones:
 
-# a. guaguas %>% select(sexo, n)
+a. guaguas %>% select(sexo, n)
 
-# b. guaguas %>% select(!c(sexo, n))   CORRECTA
+b. guaguas %>% select(!c(sexo, n))   CORRECTA
 
-# C. guaguas %>% select(guaguas, anio, nombre, proporcion)
+c. guaguas %>% select(guaguas, anio, nombre, proporcion)
  
 ```
 
 #### Solución 1
 
 ``` r
-# b- guaguas %>% select(!c(sexo, n))   CORRECTA
+b- guaguas %>% select(!c(sexo, n))   CORRECTA
 ```
 
-#### Pregunta 2 
+#### Ejercicio 2 
 
 ```r
-## Ejercicio: En Chile un nombre muy popular es Salvador por Salvador Allende
-  ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
+## Ejercicio: En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
 ## Opciones: 
   
 a. guaguas %>% filter (name = "Salvador", anio >=1973)  
@@ -106,9 +98,14 @@ guaguas %>% filter (anio >= 1973 & nombre == "Salvador")
 
 
 
-#### Pregunta 3
+#### Ejercicio 3
 
 ```r
+## Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas 
+## llamadas Gabriela, entonces:
+- es necesario seleccionar las variables de interés: nombre, cantidad, proporción y año
+- luego debemos filtrar por el nombre Gabriela a partir de 1940 hasta el año 2019 para comparar la ocurrencia de cada año
+Por favor, completa el ejercicio de acuerdo al objetivo planteado:
 
 guaguas %>% ----(---, n, proporcion, anio) %>% 
             -----(nombre == ---- ,---- > 1940)
@@ -119,6 +116,28 @@ guaguas %>% ----(---, n, proporcion, anio) %>%
  ```r
  
  guaguas %>% select(nombre, anio, n, proporcion) %>% 
-  filter(nombre == "Gabriela" ,anio > 1940) 
+     filter(nombre == "Gabriela" ,anio > 1940) 
   
   ```
+ ### ¡Tené en cuenta!
+  ```r
+# Si la consola muestra resultados sólo de algunos años, entonces recorda que es posible utilizar la función view() aprendida en la clase anterior para visualizar los resultados completos desde el año 1940 hasta el año 2019.
+
+guaguas %>% select(nombre, anio, n, proporcion) %>% 
+    filter(nombre == "Gabriela" ,anio > 1940) %>% view()
+
+  
+#  Conclusión: se observa un leve aumento en la cantidad de guaguas llamadas Gabriela a partir de 1957 pero el boom se da a finales de la década del 80 y principios de la década del 90.
+  
+  ``` 
+  
+  
+  
+  
+  ## Referencias 📚
+
+* [R para Ciencia de Datos de Hadley Wickham](https://es.r4ds.hadley.nz/)
+* [Documentación de dplyr](https://dplyr.tidyverse.org/)
+* [Primers de Rstudio](https://rstudio.cloud/learn/primers) 
+* [Paquete guaguas desarrollado por Riva Quiroga](https://github.com/rivaquiroga/guaguas)
+
