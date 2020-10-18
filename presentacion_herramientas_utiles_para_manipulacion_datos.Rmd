@@ -1,0 +1,361 @@
+---
+title: "`r emo::ji('hammer_and_wrench')` Herramientas útiles para manipular datos con dplyr"
+subtitle: "Certificacion Rstudio 2020"
+author: "Patricia Loto | 🐦@patriloto"
+date: "20/10/2020"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["sunny_day.css"]
+    nature:
+      ratio: "16:12"
+      autoplay: 40000  
+      highlightStyle: atelier-lakeside-light
+      highlightLines: true
+      countIncrementalSlides: true
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+---
+
+
+```{r carga_paquetes, message=FALSE, echo=FALSE}
+library(countdown)
+library(tidyverse)
+library(here)
+library(guaguas)
+```
+
+
+```{r meta, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_general(
+    description = "Esta lección es parte de un curso cuatrimestral para estudiantes de Ciencias Sociales denominado **Primeros pasos en R para personas de Ciencias Sociales**. En particular, esta breve lección de 15 minutos es parte del módulo **Herramientas útiles para manipular datos con el paquete dplyr**.",
+  ) %>% 
+  meta_name("github-repo" = "patriLoto/rstudio_certification2020") %>% 
+  meta_social(
+    title = "Herramientas útiles para manipular datos con el paquete dplyr. ",
+    url = "https://github.com/PatriLoto/rstudio_certification2020",
+    image = "https://robust-tools.djnavarro.net/dancing/img/filter_slide.png",
+    image_alt = "la imgen muestra un conjunto de herramientas, haciendo referencia al nombre de la lección:Herramientas útiles para manipular datos con el paquete dplyr.",
+    og_type = "website",
+    og_author = "Patricia Loto",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@patriloto"
+  )
+```
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#9CCFB1",
+  secondary_color = "#41b6a6",
+  inverse_header_color = "#2c204d"
+)
+
+style_duo_accent(
+  header_font_google = google_font("Montserrat", "500"),
+  text_font_google   = google_font("Montserrat", "400", "300i"),
+  code_font_google   = google_font("Montserrat","400", "300i")
+)
+```
+
+```{r xaringan-animate-css, echo=FALSE}
+xaringanExtra::use_animate_css()
+```
+
+```{r librerias-utiles, message=FALSE, warning=FALSE, include=FALSE} 
+library(fontawesome)
+library(emo)
+library(htmltools)
+```
+
+```{r xaringan-extra-styles, include=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_fit_screen()
+```
+
+
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+xaringanExtra::use_panelset()
+```
+
+
+```{r include=FALSE}
+
+num_fmt <- scales::number_format(big.mark = ",")
+```
+
+class: middle, center, inverse
+
+background-image: url("img/dplyr_fondo.png")
+background-size: cover
+
+## Función select y filter
+
+
+---
+
+class: top, inverse
+
+# Material
+
+# `r emo::ji("link")` https://rstudio.cloud/project/17826088
+
+# `r fa("github", fill = 'black')` https://github.com/PatriLoto/rstudio_certification2020
+
+---
+class: top, center
+
+background-image: url("img/textura_1.png")
+background-size: cover
+
+# Mapa conceptual sobre dplyr
+
+
+---
+
+## Siempre es importante recordar `r emo::ji("bulb")`
+
+#### - **El operador pipe `%>%`** :
+
+####      -- evita las funciones anidadas
+
+####      -- permite escribir código  más legible ya que la secuencia de operaciones se escribe de izquierda a derecha al igual que la escritura humana. 
+
+`r emo::ji("arrow_right")` Y lo más importante permite concatenar funciones de dplyr.
+
+
+.footnote[Fuente: [R para Ciencia de  Datos](https://es.r4ds.hadley.nz/pipes.html)]
+---
+
+class: inverse, middle
+
+background-image: url("img/textura3.jpg")
+background-size: cover
+
+.hand[<span style="font-size:60pt">¡Antes de empezar!</span>]
+
+#### - abrí la  `leccion_dplyR_01.R`
+#### - carga la librería tidyverse `tidyverse` 
+#### - carga la librería guaguas `guaguas` 
+
+---
+class:top, center
+background-image: url("img/colin_maynard_bebe.jpg")
+background-size: cover
+
+# Dataset: GUAGUAS 
+
+
+
+.footnote[Paquete: [Guaguas por Riva Quiroga](https://github.com/rivaquiroga/guaguas)]
+---
+## Guaguas `r emo::ji("baby")`
+
+```{r vistazo_guaguas2, echo=TRUE, message=FALSE, warning=FALSE}
+
+guaguas %>% str()
+```
+
+---
+class: inverse, top, left
+
+background-image: url("img/textura_1.png")
+background-size: cover
+
+## `r emo::ji("voltage")` Primera pregunta: ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+--
+class: inverse, middle, left
+### select ->extrae columnas de un dataframe 
+
+--
+### sintaxis: 
+```{r sintaxis_select, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
+select(dataset, variable1,variable2,... variable n)
+```
+
+--
+#### reescribimos la sentencia utilizando pipe
+```{r sintaxis_select2, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
+
+dataset %>%
+    select(variable1,variable2,... variable n)
+
+```
+
+#### dataset: conj. de datos sobre el que aplicaremos la función `select()`
+#### variable1 a n: variables a seleccionar del dataset
+
+---
+# Ejemplo
+
+## **Objetivo:** seleccionar año, nombre y cantidad de ocurrencias del dataset guaguas
+
+```{r select_guaguas, echo=TRUE, message=FALSE, warning=FALSE}
+guaguas %>% 
+  select(anio, nombre, n)
+```
+
+#### otra forma de escribirlo:
+
+`guaguas %>%` 
+  `select(-sexo, proporcion)`
+---
+class:middle, inverse
+background-image: url("img/textura_1.jpg")
+background-size: cover
+
+## Consigna: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+
+### Opciones:
+```{r consigna_select, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
+
+a. guaguas %>% select(sexo, n)
+
+b. guaguas %>% select(!c(sexo, n))
+
+c. guaguas %>% select(guaguas, anio, nombre, proporcion)
+
+```
+
+  
+#### `r emo::ji("arrow_right")` Recuerda si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
+
+--
+## La respuesta correcta es la **b**
+---
+class: inverse, top, left
+
+background-image: url("img/textura3.jpg")
+background-size: cover
+
+## `r emo::ji("voltage")` Segunda pregunta: ¿Cómo filtramos y creamos subconjuntos de datos en R?
+
+--
+## filter: extrae filas de un dataframe por sus valores 
+
+--
+### sintaxis: 
+
+```{r sintaxis_filter, echo=TRUE, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+
+filter(dataset, condicion1, condicion2,...condicionn)
+```
+
+--
+#### reescribimos la sentencia utilizando pipe
+```{r sintaxis_filter2, echo=TRUE, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
+
+dataset %>%`
+    `filter(condicion1, condicion2,...condicionn)
+```
+
+
+#### dataset: conj. de datos sobre el que aplicaremos la función `filter()`
+#### condiciones1 a n: condiciones o test lógico para el filtrado de datos
+
+---
+## Antes de continuar `r emo::ji("bulb")`
+
+#### Recordamos: Algunos operadores vistos en las clases anteriores que nos ayudarán 
+
+--
+
+| operador | significado   | 
+| -------- | --------------| 
+| >        | mayor         | 
+| >=       | mayor o igual | 
+| <        | menor         | 
+| <=       |menor o igual  | 
+| !        |distinto       | 
+
+
+
+.pull-left-narrow[
+#### Principales operadores lógicos para unir condiciones
+
+| operador| Ejemplo| evalúa                     |
+| --------| -------| ---------------------------|
+| &       | A & B  | ¿Son verdad tanto A como B?|
+| '|'     | `A | B`  | ¿Son verdaderas una o ambas de A y B?|
+| !       | !A     |   ¿A no es cierto?        |
+  
+]
+---
+# EJEMPLO
+
+## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010
+
+```{r filter_guaguas, echo=TRUE, message=FALSE, warning=FALSE}
+guaguas %>%
+  filter(sexo == 'F', anio> 2009)
+```
+---
+class:middle, inverse
+background-image: url("img/textura_1.jpg")
+background-size: cover
+
+### Consigna: En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
+
+### Opciones: 
+```{r ejercicio_filter, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
+a. guaguas %>% filter (name = "Salvador", anio >=1973)  
+  
+b. guaguas %>% filter (nombre == "Salvador", anio == 1973)
+
+c. guaguas %>% filter (anio >= 1973 & nombre == "Salvador") 
+```
+
+#### `r emo::ji("arrow_right")`  Recuerda, si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
+
+--
+## La respuesta correcta es la **c**
+
+---
+
+background-image: url("img/livecoding.jpg")
+background-size: cover
+class: center, middle, inverse
+# `r emo::ji("wrench")` DEMO `r emo::ji("computer")`
+
+---
+
+class: middle, inverse
+
+background-image: url("img/textura3.jpg")
+background-size: cover
+
+.pull-right-wide[
+<br>###Para aprender más:
+
+### R para Ciencia de Datos es un buen comienzo<br>
+https://es.r4ds.hadley.nz/
+
+<br><br>
+
+### Documentación de dplyr tiene mucha información útil
+https://dplyr.tidyverse.org/
+]
+
+---
+background-image: url(img/bebe_sentado.jpg)
+background-size: cover
+class: top, center
+# `r emo::ji("sparkler")`¡GRACIAS! `r emo::ji("sparkler")`
