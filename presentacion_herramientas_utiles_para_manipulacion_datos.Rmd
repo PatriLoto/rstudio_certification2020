@@ -104,7 +104,7 @@ num_fmt <- scales::number_format(big.mark = ",")
 
 class: middle, center, inverse
 
-background-image: url("img/dplyr_fondo.png")
+background-image: url("img/dplyr_fondo3.png")
 background-size: cover
 
 ## Función select y filter
@@ -116,30 +116,27 @@ class: top, inverse
 
 # Material
 
-# `r emo::ji("link")` https://rstudio.cloud/project/17826088
+##`r emo::ji("link")` .hand[<span style="font-size:80pt">https://rstudio.cloud/project/17826088</span>]
 
-# `r fa("github", fill = 'black')` https://github.com/PatriLoto/rstudio_certification2020
+##`r fa("github", fill = 'black')`  https://github.com/PatriLoto/rstudio_certification2020
 
 ---
 class: top, center
 
-background-image: url("img/textura_1.png")
-background-size: cover
-
-# Mapa conceptual sobre dplyr
-
-
+## Mapa conceptual sobre dplyr
+```{r echo=FALSE, out.width = '180%'}
+knitr::include_graphics("img/mapa_conceptual_4.png")
+```
+  
 ---
 
-## Siempre es importante recordar `r emo::ji("bulb")`
+## `r emo::ji("bulb")` Breve repaso de la clase anterior
 
-#### - **El operador pipe `%>%`** :
+## **El operador pipe `%>%`**
 
-####      -- evita las funciones anidadas
+###  - permite escribir código  más legible ya que la secuencia de operaciones se escribe de izquierda a derecha al igual que la escritura humana. 
 
-####      -- permite escribir código  más legible ya que la secuencia de operaciones se escribe de izquierda a derecha al igual que la escritura humana. 
-
-`r emo::ji("arrow_right")` Y lo más importante permite concatenar funciones de dplyr.
+### `r emo::ji("arrow_right")` Y lo más importante permite concatenar funciones de dplyr.
 
 
 .footnote[Fuente: [R para Ciencia de  Datos](https://es.r4ds.hadley.nz/pipes.html)]
@@ -177,13 +174,11 @@ guaguas %>% str()
 ---
 class: inverse, top, left
 
-background-image: url("img/textura_1.png")
-background-size: cover
 
-## `r emo::ji("voltage")` Primera pregunta: ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+## `r emo::ji("voltage")` ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
 --
 class: inverse, middle, left
-### select ->extrae columnas de un dataframe 
+### select ->  extrae columnas de un dataframe 
 
 --
 ### sintaxis: 
@@ -200,8 +195,8 @@ dataset %>%
 
 ```
 
-#### dataset: conj. de datos sobre el que aplicaremos la función `select()`
-#### variable1 a n: variables a seleccionar del dataset
+#### - dataset: conj. de datos sobre el que aplicaremos la función `select()`
+#### - variable1 a n: variables a seleccionar del dataset
 
 ---
 # Ejemplo
@@ -243,13 +238,10 @@ c. guaguas %>% select(guaguas, anio, nombre, proporcion)
 ---
 class: inverse, top, left
 
-background-image: url("img/textura3.jpg")
-background-size: cover
-
-## `r emo::ji("voltage")` Segunda pregunta: ¿Cómo filtramos y creamos subconjuntos de datos en R?
+## `r emo::ji("voltage")` ¿Cómo filtramos y creamos subconjuntos de datos en R?
 
 --
-## filter: extrae filas de un dataframe por sus valores 
+### filter  ->  extrae filas de un dataframe por sus valores 
 
 --
 ### sintaxis: 
@@ -268,13 +260,13 @@ dataset %>%`
 ```
 
 
-#### dataset: conj. de datos sobre el que aplicaremos la función `filter()`
-#### condiciones1 a n: condiciones o test lógico para el filtrado de datos
+#### - dataset: conj. de datos sobre el que aplicaremos la función `filter()`
+#### - condiciones1 a n: condiciones o test lógico para el filtrado de datos
 
 ---
 ## Antes de continuar `r emo::ji("bulb")`
 
-#### Recordamos: Algunos operadores vistos en las clases anteriores que nos ayudarán 
+### Recordemos algunos operadores ya aprendidos que nos ayudarán con en combinación con `filter()`
 
 --
 
@@ -285,19 +277,8 @@ dataset %>%`
 | <        | menor         | 
 | <=       |menor o igual  | 
 | !        |distinto       | 
+                 
 
-
-
-.pull-left-narrow[
-#### Principales operadores lógicos para unir condiciones
-
-| operador| Ejemplo| evalúa                     |
-| --------| -------| ---------------------------|
-| &       | A & B  | ¿Son verdad tanto A como B?|
-| '|'     | `A | B`  | ¿Son verdaderas una o ambas de A y B?|
-| !       | !A     |   ¿A no es cierto?        |
-  
-]
 ---
 # EJEMPLO
 
@@ -339,23 +320,18 @@ class: center, middle, inverse
 
 class: middle, inverse
 
-background-image: url("img/textura3.jpg")
-background-size: cover
-
-.pull-right-wide[
-<br>###Para aprender más:
+### Para aprender más:
 
 ### R para Ciencia de Datos es un buen comienzo<br>
-https://es.r4ds.hadley.nz/
+###https://es.r4ds.hadley.nz/
 
-<br><br>
 
 ### Documentación de dplyr tiene mucha información útil
-https://dplyr.tidyverse.org/
-]
+### https://dplyr.tidyverse.org/
+
 
 ---
-background-image: url(img/bebe_sentado.jpg)
+background-image: url(img/bebe_entero.jpg)
 background-size: cover
 class: top, center
-# `r emo::ji("sparkler")`¡GRACIAS! `r emo::ji("sparkler")`
+# ¡GRACIAS! 
