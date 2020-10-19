@@ -1,3 +1,4 @@
+
 # Lección 2: Herramientas útiles para manipulación de datos utilizando R
 
 # En la lección utilizaremos los paquetes tidyverse,devtools y guaguas.
@@ -9,7 +10,7 @@ devtools::install_github("rivaquiroga/guaguas")  # hermano latinoamericano del p
 
 ## Paso dos: Llamar a los paquetes anteriormente instalados
 
-library(tidyverse)  
+library(tidyverse)  # combinacion de paquetes para importar + transformar + visualizar
 library(guaguas)
 
 #-------------------------------------------------
@@ -173,11 +174,13 @@ guaguas %>% select(nombre, anio, n, proporcion) %>%
 #----------------------------------------------------------
 
 #Referencias
+
 # R para Ciencia de Datos de Hadley Wickham: https://es.r4ds.hadley.nz/
 # Documentación de dplyr: https://dplyr.tidyverse.org/
 # Primers de Rstudio: https://rstudio.cloud/learn/primers
 # Paquete guaguas desarrollado por Riva Quiroga: https://github.com/rivaquiroga/guaguas
-
-# Acceso: https://rstudio.cloud/project/1782608
-
 # Manipulación de datos: https://github.com/djnavarro/robust-tools/blob/master/static/dancing/index.Rmd
+# Taller primeros pasos en R: https://github.com/rivaquiroga/RLadies-Santiago/blob/master/2018-04_taller_primeros_pasos_en_R.Rmd
+# Introducción a R: https://github.com/jbkunst/puc-introduccion-a-R
+
+# Si te interesa ingresar por Rstudio Cloud: https://rstudio.cloud/project/1782608
