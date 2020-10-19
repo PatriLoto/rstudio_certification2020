@@ -20,7 +20,7 @@
  * ------------------------------------------------------- */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,300i&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:500&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,300i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono:400&display=swap);
 
 
 :root {
@@ -31,7 +31,7 @@
   --text-font-base: sans-serif;
   --header-font-family: Montserrat;
   --header-font-is-google: 1;
-  --code-font-family: Montserrat;
+  --code-font-family: 'Fira Mono';
   --code-font-is-google: 1;
   --base-font-size: 20px;
   --text-font-size: 1rem;
@@ -43,20 +43,20 @@
 
   /* Colors */
   --text-color: #000000;
-  --header-color: #035AA6;
+  --header-color: #9CCFB1;
   --background-color: #FFFFFF;
-  --link-color: #035AA6;
-  --text-bold-color: #035AA6;
+  --link-color: #9CCFB1;
+  --text-bold-color: #9CCFB1;
   --code-highlight-color: rgba(255,255,0,0.5);
   --inverse-text-color: #000000;
-  --inverse-background-color: #03A696;
-  --inverse-header-color: #000000;
-  --title-slide-background-color: #035AA6;
-  --title-slide-text-color: #FFFFFF;
-  --header-background-color: #035AA6;
+  --inverse-background-color: #41b6a6;
+  --inverse-header-color: #2c204d;
+  --title-slide-background-color: #9CCFB1;
+  --title-slide-text-color: #000000;
+  --header-background-color: #9CCFB1;
   --header-background-text-color: #FFFFFF;
-  --primary: #035AA6;
-  --secondary: #03A696;
+  --primary: #9CCFB1;
+  --secondary: #41b6a6;
   --white: #FFFFFF;
   --black: #000000;
 }
@@ -99,10 +99,10 @@ h1, h2, h3 {
 }
 .remark-inline-code {
   font-size: var(--code-inline-font-size);
-  color: #035AA6;
+  color: #9CCFB1;
 }
 .remark-slide-number {
-  color: #035AA6;
+  color: #9CCFB1;
   opacity: 1;
   font-size: 0.9em;
 }
@@ -144,10 +144,10 @@ a, a > code {
   float: left;
 }
 .left-column h2, .left-column h3 {
-  color: #035AA699;
+  color: #9CCFB199;
 }
 .left-column h2:last-of-type, .left-column h3:last-child {
-  color: #035AA6;
+  color: #9CCFB1;
 }
 .right-column {
   width: 75%;
@@ -169,7 +169,7 @@ img, video, iframe {
   max-width: 100%;
 }
 blockquote {
-  border-left: solid 5px #03A69680;
+  border-left: solid 5px #41b6a680;
   padding-left: 1em;
 }
 .remark-slide table {
@@ -184,7 +184,7 @@ th, td {
   padding: 5px;
 }
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) {
-  background: #CCEDEA;
+  background: #D9F0ED;
 }
 table.dataTable tbody {
   background-color: var(--background-color);
@@ -194,7 +194,7 @@ table.dataTable.display tbody tr.odd {
   background-color: var(--background-color);
 }
 table.dataTable.display tbody tr.even {
-  background-color: #CCEDEA;
+  background-color: #D9F0ED;
 }
 table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.5);

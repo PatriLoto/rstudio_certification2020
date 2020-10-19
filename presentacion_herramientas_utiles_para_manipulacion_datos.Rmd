@@ -5,12 +5,12 @@ author: "Patricia Loto | 🐦@patriloto"
 date: "20/10/2020"
 output:
   xaringan::moon_reader:
+    css: xaringan-themer.css
     lib_dir: libs
-    css: ["sunny_day.css"]
     nature:
       ratio: "16:12"
       autoplay: 40000  
-      highlightStyle: atelier-lakeside-light
+      highlightStyle: solarized-light
       highlightLines: true
       countIncrementalSlides: true
       slideNumberFormat: |
@@ -21,13 +21,29 @@ output:
 ---
 
 
-```{r carga_paquetes, message=FALSE, echo=FALSE}
+```{r carga_paquetes, message=FALSE, include=FALSE}
+library(fontawesome)
+library(emo)
+library(htmltools)
 library(countdown)
 library(tidyverse)
 library(here)
 library(guaguas)
 ```
 
+
+```{r xaringan-themer, warning=FALSE, include=FALSE}
+library(xaringanthemer)
+
+style_duo_accent(
+  primary_color = "#9CCFB1",
+  secondary_color = "#41b6a6",
+  inverse_header_color = "#2c204d",
+  header_font_google = google_font("Montserrat", "500"),
+  text_font_google   = google_font("Montserrat", "400", "300i"),
+  code_font_google   = google_font("Fira Mono", "400")
+)
+```
 
 ```{r meta, echo=FALSE}
 library(metathis)
@@ -53,26 +69,11 @@ meta() %>%
 options(htmltools.dir.version = FALSE)
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
-library(xaringanthemer)
-style_duo_accent(
-  primary_color = "#9CCFB1",
-  secondary_color = "#41b6a6",
-  inverse_header_color = "#2c204d"
-)
-
-style_duo_accent(
-  header_font_google = google_font("Montserrat", "500"),
-  text_font_google   = google_font("Montserrat", "400", "300i"),
-  code_font_google   = google_font("Montserrat","400", "300i")
-)
-```
-
 ```{r xaringan-animate-css, echo=FALSE}
 xaringanExtra::use_animate_css()
 ```
 
-```{r librerias-utiles, message=FALSE, warning=FALSE, include=FALSE} 
+```{r librerias-utiles, message=FALSE, warning=FALSE, include=FALSE}
 library(fontawesome)
 library(emo)
 library(htmltools)
@@ -116,19 +117,20 @@ class: top, inverse
 
 # Material
 
-##`r emo::ji("link")` .hand[<span style="font-size:80pt">https://rstudio.cloud/project/17826088</span>]
+###`r emo::ji("link")` https://rstudio.cloud/project/17826088
 
-##`r fa("github", fill = 'black')`  https://github.com/PatriLoto/rstudio_certification2020
+###`r fa("github", fill = 'black')`  https://github.com/PatriLoto/rstudio_certification2020
 
 ---
-class: top, center
+class: top, center, inverse
 
-## Mapa conceptual sobre dplyr
-```{r echo=FALSE, out.width = '180%'}
+## Mapa conceptual 
+```{r echo=FALSE, out.width = '150%'}
 knitr::include_graphics("img/mapa_conceptual_4.png")
 ```
   
 ---
+class: top, inverse
 
 ## `r emo::ji("bulb")` Breve repaso de la clase anterior
 
@@ -144,14 +146,11 @@ knitr::include_graphics("img/mapa_conceptual_4.png")
 
 class: inverse, middle
 
-background-image: url("img/textura3.jpg")
-background-size: cover
-
 .hand[<span style="font-size:60pt">¡Antes de empezar!</span>]
 
 #### - abrí la  `leccion_dplyR_01.R`
-#### - carga la librería tidyverse `tidyverse` 
-#### - carga la librería guaguas `guaguas` 
+#### - carga la librería  `tidyverse` 
+#### - carga la librería  `guaguas` 
 
 ---
 class:top, center
@@ -234,7 +233,7 @@ c. guaguas %>% select(guaguas, anio, nombre, proporcion)
 #### `r emo::ji("arrow_right")` Recuerda si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
 
 --
-## La respuesta correcta es la **b**
+## La respuesta correcta es la .hand[<span style="font-color:'#9CCFB1'">b</span>]
 ---
 class: inverse, top, left
 
@@ -255,8 +254,8 @@ filter(dataset, condicion1, condicion2,...condicionn)
 #### reescribimos la sentencia utilizando pipe
 ```{r sintaxis_filter2, echo=TRUE, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
 
-dataset %>%`
-    `filter(condicion1, condicion2,...condicionn)
+dataset %>%
+    filter(condicion1, condicion2,...condicionn)
 ```
 
 
@@ -264,9 +263,9 @@ dataset %>%`
 #### - condiciones1 a n: condiciones o test lógico para el filtrado de datos
 
 ---
-## Antes de continuar `r emo::ji("bulb")`
+## `r emo::ji("bulb")`Antes de continuar 
 
-### Recordemos algunos operadores ya aprendidos que nos ayudarán con en combinación con `filter()`
+### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `filter()`
 
 --
 
@@ -280,7 +279,7 @@ dataset %>%`
                  
 
 ---
-# EJEMPLO
+# Ejemplo
 
 ## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010
 
