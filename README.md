@@ -33,12 +33,12 @@ Esta breve lección de 15 minutos es parte del módulo **Herramientas útiles pa
 
 Los estudiantes han visto en las clases anteriores manejo de la consola, vectores y operaciones, lectura de datos, el operador pipe, la función view, entre otros . 
 
-## [Mapa conceptual](https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/mapa_conceptual_dplyr%20_peque%C3%B1o.png) 🗺️
+## [Mapa conceptual](https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/mapa_conceptual_4.png) 🗺️
+<img src="img/mapa_conceptual_4.png" width="1000" />
 
 
-
-## Material de la clase 🗂
- * **Slides**
+## Material de la clase 🗂  
+ * **[Slides](https://patriloto.github.io/rstudio_certification2020/presentacion_herramientas_utiles_para_manipulacion_datos.html#1)**
  * **[Código](https://github.com/PatriLoto/rstudio_certification2020/blob/master/leccion_dplyR_01.R)** 
  * **[Proyecto de Rstudio cloud](https://rstudio.cloud/project/1782608)**
 
