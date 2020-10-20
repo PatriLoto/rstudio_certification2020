@@ -74,22 +74,29 @@ guaguas
 ## Objetivo: seleccionar año, nombre y cantidad de ocurrenciasdel dataset guaguas
 
 guaguas %>% 
-  select(anio, nombre, n)
+  select(anio, nombre, n, proporcion)
 
 #otra forma de escribirlo:
   
 guaguas %>% 
-  select(-sexo, proporcion)  # también puede utilizarse el símbolo !
+  select(-sexo)  # también puede utilizarse el símbolo !
 
-## Consigna: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+# También podemos utilizar un ayudante de select:
+guaguas %>% 
+  select(contains("n"))
+
+
+##  Consigna: Si quisieramos seleccionar las variables: anio, nombre y nro. de ocurrencias. ¿Cuál sería la opción correcta?
 ## Opciones:
 
-guaguas %>% select(sexo, n)
+select(anio, nombre, n)
 
-guaguas %>% select(!c(sexo, n))
+guaguas %>% 
+  select(!c(sexo, proporcion))
 
-guaguas %>% select(guaguas, anio, nombre, proporcion)
-  
+guaguas %>%
+  select(guaguas, anio, nombre, n)
+
 ## Si tienes dudas, puedes ejecutarlas y ver que resultados obtienes.
 
 #-------------------------------------------------
@@ -114,12 +121,18 @@ guaguas %>% select(guaguas, anio, nombre, proporcion)
 # >
 # >=
 # <=
-# !  
+# !  o - 
 
-## Objetivo: filtrar los nombres de mujeres a partir del año 2010
+## Objetivo: filtrar los nombres de mujeres a partir del año 2010 (incluido)
  
 guaguas %>%
-  filter(sexo == 'F', anio> 2009)
+  filter(sexo == "F", anio> 2009)
+
+
+# otra opción
+
+guaguas %>%
+  filter(sexo == "F", anio>= 2010)
 
 
 # Recordemos los Principales operadores lógicos para unir condiciones, también nos serán de utilidad
@@ -132,11 +145,11 @@ guaguas %>%
 ## ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
 ## Opciones: 
   
-guaguas %>% filter (name = "Salvador", anio >=1973)  
-  
-guaguas %>% filter (anio >= 1973 & nombre == "Salvador") 
+guaguas %>% filter(nombre = "Salvador", anio >= 1970,anio <= 1973)
 
-guaguas %>% filter (nombre == "Salvador", anio == 1973)
+guaguas %>% filter(nombre == "Salvador", anio== 1970 , anio== 1973)
+
+guaguas %>% filter(nombre == "Salvador", between(anio, 1970,1973))
   
 ## Prestá atención a los detalles y Si tienes dudas, puedes ejecutarlas y ver que resultados obtienes.
 
@@ -153,19 +166,21 @@ guaguas %>% filter (nombre == "Salvador", anio == 1973)
 # Por favor, completa el ejercicio de acuerdo al objetivo planteado:
   
   
-guaguas %>% ----(---, n, proporcion, anio) %>% 
+guaguas %>% ----(---, nombre,--- ) %>% 
             -----(nombre == ---- ,---- > 1940)
 
 
 ## Resuelto 
-guaguas %>% select(nombre, anio, n, proporcion) %>% 
-  filter(nombre == "Gabriela" ,anio > 1940) 
+guaguas %>% 
+  select(anio,nombre, n) %>% 
+  filter(nombre == "Gabriela" , anio > 1940) 
 
 ### ¡Tené en cuenta!
-# Si la consola nos muestra resultados sólo de algunos años, entonces recorda que es posible utilizar la función view() aprendida en la clase anterior para visualizar 
+# Si la consola nos muestra resultados sólo de algunos años, entonces recorda que es posible utilizar 
+#la función view() aprendida en la clase anterior para visualizar 
 # los resultados completos desde el año 1940 hasta el año 2019.
 
-guaguas %>% select(nombre, anio, n, proporcion) %>% 
+guaguas %>% select(anio, nombre, n) %>% 
   filter(nombre == "Gabriela" ,anio > 1940) %>% view()
 
 # Conclusión: se observa un leve aumento en la cantidad de guaguas llamadas Gabriela a partir de 1957 
