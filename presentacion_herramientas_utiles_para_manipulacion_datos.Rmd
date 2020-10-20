@@ -2,7 +2,7 @@
 title: "`r emo::ji('hammer_and_wrench')` Herramientas útiles para manipular datos con dplyr"
 subtitle: "Certificacion Rstudio 2020"
 author: "Patricia Loto | 🐦@patriloto"
-date: "20/10/2020"
+date: "2020"
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -54,7 +54,7 @@ meta() %>%
   meta_social(
     title = "Herramientas útiles para manipular datos con el paquete dplyr. ",
     url = "https://github.com/PatriLoto/rstudio_certification2020",
-    image = "https://robust-tools.djnavarro.net/dancing/img/filter_slide.png",
+    image = "https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/presentacion_clase_guaguas.png",
     image_alt = "la imgen muestra un conjunto de herramientas, haciendo referencia al nombre de la lección:Herramientas útiles para manipular datos con el paquete dplyr.",
     og_type = "website",
     og_author = "Patricia Loto",
