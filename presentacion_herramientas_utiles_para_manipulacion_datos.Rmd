@@ -12,7 +12,6 @@ output:
       autoplay: 40000  
       highlightStyle: solarized-light
       highlightLines: true
-      countIncrementalSlides: true
       slideNumberFormat: |
         <div class="progress-bar-container">
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
@@ -25,7 +24,7 @@ output:
 library(fontawesome)
 library(emo)
 library(htmltools)
-library(countdown)
+#library(countdown)
 library(tidyverse)
 library(here)
 library(guaguas)
@@ -124,26 +123,43 @@ class: top, inverse
 ##`r fa("github", fill = 'black')`  http://bit.ly/material_dplyr_01
 
 ---
-class: top, center
-
-## Mapa conceptual 
-```{r echo=FALSE, out.width = '150%', fig.align='center'}
-knitr::include_graphics("img/mapa_conceptual_4.png")
-```
-  
----
 class: top, inverse
 
 ## `r emo::ji("bulb")` Breve repaso de la clase anterior
 
 ## **El operador pipe `%>%`**
 
-###  - permite escribir código  más legible ya que la secuencia de operaciones se escribe de izquierda a derecha al igual que la escritura humana. 
 
 ### `r emo::ji("arrow_right")` Y lo más importante permite concatenar funciones de dplyr.
 
 
 .footnote[Fuente: [R para Ciencia de  Datos](https://es.r4ds.hadley.nz/pipes.html)]
+---
+## `r emo::ji("bulb")`Breve repaso 
+
+#### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `select` y `filter()`
+
+
+
+| operador | significado    | 
+| -------- | ---------------| 
+| ==       | igualdad       | 
+| >        | mayor          | 
+| >=       | mayor o igual  | 
+| <        | menor          | 
+| <=       | menor o igual  | 
+
+
+  
+    
+#### Principales operadores lógicos para unir condiciones
+
+
+| operador | ejemplo | representa |
+| -------- | --------| -----------|
+|  &       | A & B   | A y B      |
+|  !       | ! A     | negación  |    
+                 
 ---
 
 class: inverse, middle
@@ -166,19 +182,28 @@ background-size: cover
 ---
 ## Guaguas `r emo::ji("baby")`
 
-```{r vistazo_guaguas2, echo=TRUE, message=FALSE, warning=FALSE}
-
+```{r vistazo_guaguas2, echo=FALSE, message=FALSE, warning=FALSE}
+#library(kableExtra)
+#kable(guaguas)
 guaguas %>% glimpse()
 ```
+---
+class: inverse, top, left
+
+## `r emo::ji("voltage")` ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+
+```{r echo=FALSE, out.width = '90%', fig.align='center'}
+knitr::include_graphics("img/select.png")
+```  
 
 ---
 class: inverse, top, left
 
 
-## `r emo::ji("voltage")` ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+## `r emo::ji("voltage")` SELECT
 --
 class: inverse, middle, left
-### select ->  extrae columnas de un dataframe 
+###  extrae columnas de un dataframe 
 
 --
 ### sintaxis: 
@@ -201,32 +226,37 @@ dataset %>%
 ---
 # Ejemplo
 
-## **Objetivo:** seleccionar año, nombre y cantidad de ocurrencias del dataset guaguas
+## **Objetivo:** seleccionar año, nombre, nro. de ocurrencias y proporción de GUAGUAS
 
-```{r select_guaguas, echo=TRUE, message=FALSE, warning=FALSE}
+--
+## DEMO `r emo::ji("computer")`
+
+
+--
+```{r select_guaguas, echo=FALSE, message=FALSE, warning=FALSE}
 guaguas %>% 
-  select(anio, nombre, n)
+  select(anio, nombre, n, proporcion) %>% slice(1:6)
 ```
 
-#### otra forma de escribirlo:
 
-`guaguas %>%` 
-  `select(-sexo, proporcion)`
 ---
 class:middle, inverse
 background-image: url("img/textura_1.jpg")
 background-size: cover
 
-## Consigna: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+### Consigna: Si quisieramos seleccionar las variables: anio, nombre y nro. de ocurrencias. ¿Cuál sería la opción correcta?
 
 ### Opciones:
 ```{r consigna_select, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
 
-a. guaguas %>% select(sexo, n)
+a. select(anio, nombre, n)
 
-b. guaguas %>% select(!c(sexo, n))
 
-c. guaguas %>% select(guaguas, anio, nombre, proporcion)
+b. guaguas %>% 
+      select(!c(sexo, proporcion))
+
+c. guaguas %>%
+      select(guaguas, anio, nombre, n)
 
 ```
 
@@ -235,13 +265,22 @@ c. guaguas %>% select(guaguas, anio, nombre, proporcion)
 
 --
 ## La respuesta correcta es la .hand[<span style="font-color:'#9CCFB1'">b</span>]
+
 ---
 class: inverse, top, left
 
 ## `r emo::ji("voltage")` ¿Cómo filtramos y creamos subconjuntos de datos en R?
+```{r echo=FALSE, out.width = '90%', fig.align='center'}
+knitr::include_graphics("img/filter.png")
+```  
+
+---
+class: inverse, top, left
+
+## `r emo::ji("voltage")` FILTER
 
 --
-### filter  ->  extrae filas de un dataframe por sus valores 
+### extrae filas de un dataframe por sus valores 
 
 --
 ### sintaxis: 
@@ -264,44 +303,37 @@ dataset %>%
 #### - condiciones1 a n: condiciones o test lógico para el filtrado de datos
 
 ---
-## `r emo::ji("bulb")`Antes de continuar 
-
-### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `filter()`
-
---
-
-| operador | significado   | 
-| -------- | --------------| 
-| >        | mayor         | 
-| >=       | mayor o igual | 
-| <        | menor         | 
-| <=       |menor o igual  | 
-| !        |distinto       | 
-                 
-
----
 # Ejemplo
 
-## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010
+## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010 (incluido)
 
-```{r filter_guaguas, echo=TRUE, message=FALSE, warning=FALSE}
+
+--
+## DEMO `r emo::ji("computer")`
+
+
+--
+```{r filter_guaguas, echo=FALSE, message=FALSE, warning=FALSE}
 guaguas %>%
-  filter(sexo == 'F', anio> 2009)
+  filter(sexo == 'F', anio>= 2010) %>% slice(1:8)
 ```
 ---
 class:middle, inverse
 background-image: url("img/textura_1.jpg")
 background-size: cover
 
-### Consigna: En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
+#### Consigna: En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende. Si quisieramos conocer el nro. de ocurrencias de dicho nombre durante su mandato (1970-1973) ¿Cuál opción elegiríamos?
 
 ### Opciones: 
 ```{r ejercicio_filter, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
-a. guaguas %>% filter (name = "Salvador", anio >=1973)  
+a. guaguas %>% 
+      filter (nombre = "Salvador", anio >= 1970, anio <= 1973) 
   
-b. guaguas %>% filter (nombre == "Salvador", anio == 1973)
+b. guaguas %>% 
+  filter (nombre == "Salvador", anio == 1970 , anio == 1973)
 
-c. guaguas %>% filter (anio >= 1973 & nombre == "Salvador") 
+c. guaguas %>% 
+  filter (nombre == "Salvador", between(anio, 1970,1973) 
 ```
 
 #### `r emo::ji("arrow_right")`  Recuerda, si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
@@ -310,11 +342,24 @@ c. guaguas %>% filter (anio >= 1973 & nombre == "Salvador")
 ## La respuesta correcta es la c
 
 ---
+## Ejercicio combinando `select` y `filter`
 
-background-image: url("img/livecoding.jpg")
-background-size: cover
-class: center, middle
-# `r emo::ji("wrench")` DEMO `r emo::ji("computer")`
+#### Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces:
+
+--
+- es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
+
+--
+- filtrar por el nombre Gabriela a partir de 1940 hasta el año 2019 para comparar la ocurrencia de cada año
+
+
+#### Por favor, completa el ejercicio de acuerdo al objetivo planteado:
+
+```{r ejercicio_combinado, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
+  
+guaguas %>% ----(---, nombre,--- ) %>% 
+            -----(nombre == ---- ,---- > 1940)
+```
 
 ---
 

@@ -90,24 +90,43 @@ class: top, inverse
 ##&lt;svg style="height:0.8em;top:.04em;position:relative;fill:black;" viewBox="0 0 496 512"&gt;&lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt;  http://bit.ly/material_dplyr_01
 
 ---
-class: top, center
-
-## Mapa conceptual 
-&lt;img src="img/mapa_conceptual_4.png" width="150%" style="display: block; margin: auto;" /&gt;
-  
----
 class: top, inverse
 
 ## 💡 Breve repaso de la clase anterior
 
 ## **El operador pipe `%&gt;%`**
 
-###  - permite escribir código  más legible ya que la secuencia de operaciones se escribe de izquierda a derecha al igual que la escritura humana. 
 
 ### ➡️ Y lo más importante permite concatenar funciones de dplyr.
 
 
 .footnote[Fuente: [R para Ciencia de  Datos](https://es.r4ds.hadley.nz/pipes.html)]
+---
+## 💡Breve repaso 
+
+#### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `select` y `filter()`
+
+
+
+| operador | significado    | 
+| -------- | ---------------| 
+| ==       | igualdad       | 
+| &gt;        | mayor          | 
+| &gt;=       | mayor o igual  | 
+| &lt;        | menor          | 
+| &lt;=       | menor o igual  | 
+
+
+  
+    
+#### Principales operadores lógicos para unir condiciones
+
+
+| operador | ejemplo | representa |
+| -------- | --------| -----------|
+|  &amp;       | A &amp; B   | A y B      |
+|  !       | ! A     | negación  |    
+                 
 ---
 
 class: inverse, middle
@@ -131,10 +150,6 @@ background-size: cover
 ## Guaguas 👶
 
 
-```r
-guaguas %&gt;% glimpse()
-```
-
 ```
 ## Rows: 84,565
 ## Columns: 5
@@ -144,15 +159,21 @@ guaguas %&gt;% glimpse()
 ## $ n          &lt;int&gt; 2128, 982, 636, 631, 426, 340, 326, 289, 277, 269, 239, ...
 ## $ proporcion &lt;dbl&gt; 0.10451353, 0.04822946, 0.03123619, 0.03099062, 0.020922...
 ```
+---
+class: inverse, top, left
+
+## ⚡ ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+
+&lt;img src="img/select.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: inverse, top, left
 
 
-## ⚡ ¿Cómo seleccionamos sólo algunas variables de nuestro dataset?
+## ⚡ SELECT
 --
 class: inverse, middle, left
-### select -&gt;  extrae columnas de un dataframe 
+###  extrae columnas de un dataframe 
 
 --
 ### sintaxis: 
@@ -175,50 +196,45 @@ dataset %&gt;%
 ---
 # Ejemplo
 
-## **Objetivo:** seleccionar año, nombre y cantidad de ocurrencias del dataset guaguas
+## **Objetivo:** seleccionar año, nombre, nro. de ocurrencias y proporción de GUAGUAS
+
+--
+## DEMO 💻
 
 
-```r
-guaguas %&gt;% 
-  select(anio, nombre, n)
+--
+
+```
+## # A tibble: 6 x 4
+##    anio nombre     n proporcion
+##   &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;
+## 1  1920 María   2128     0.105 
+## 2  1920 José     982     0.0482
+## 3  1920 Juan     636     0.0312
+## 4  1920 Luis     631     0.0310
+## 5  1920 Rosa     426     0.0209
+## 6  1920 Ana      340     0.0167
 ```
 
-```
-## # A tibble: 84,565 x 3
-##     anio nombre     n
-##    &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;
-##  1  1920 María   2128
-##  2  1920 José     982
-##  3  1920 Juan     636
-##  4  1920 Luis     631
-##  5  1920 Rosa     426
-##  6  1920 Ana      340
-##  7  1920 Manuel   326
-##  8  1920 Olga     289
-##  9  1920 Carlos   277
-## 10  1920 Pedro    269
-## # ... with 84,555 more rows
-```
 
-#### otra forma de escribirlo:
-
-`guaguas %&gt;%` 
-  `select(-sexo, proporcion)`
 ---
 class:middle, inverse
 background-image: url("img/textura_1.jpg")
 background-size: cover
 
-## Consigna: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+### Consigna: Si quisieramos seleccionar las variables: anio, nombre y nro. de ocurrencias. ¿Cuál sería la opción correcta?
 
 ### Opciones:
 
 ```r
-a. guaguas %&gt;% select(sexo, n)
+a. select(anio, nombre, n)
 
-b. guaguas %&gt;% select(!c(sexo, n))
 
-c. guaguas %&gt;% select(guaguas, anio, nombre, proporcion)
+b. guaguas %&gt;% 
+      select(!c(sexo, proporcion))
+
+c. guaguas %&gt;%
+      select(guaguas, anio, nombre, n)
 ```
 
   
@@ -226,13 +242,20 @@ c. guaguas %&gt;% select(guaguas, anio, nombre, proporcion)
 
 --
 ## La respuesta correcta es la .hand[&lt;span style="font-color:'#9CCFB1'"&gt;b&lt;/span&gt;]
+
 ---
 class: inverse, top, left
 
 ## ⚡ ¿Cómo filtramos y creamos subconjuntos de datos en R?
+&lt;img src="img/filter.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, top, left
+
+## ⚡ FILTER
 
 --
-### filter  -&gt;  extrae filas de un dataframe por sus valores 
+### extrae filas de un dataframe por sus valores 
 
 --
 ### sintaxis: 
@@ -255,63 +278,48 @@ dataset %&gt;%
 #### - condiciones1 a n: condiciones o test lógico para el filtrado de datos
 
 ---
-## 💡Antes de continuar 
+# Ejemplo
 
-### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `filter()`
+## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010 (incluido)
+
+
+--
+## DEMO 💻
+
 
 --
 
-| operador | significado   | 
-| -------- | --------------| 
-| &gt;        | mayor         | 
-| &gt;=       | mayor o igual | 
-| &lt;        | menor         | 
-| &lt;=       |menor o igual  | 
-| !        |distinto       | 
-                 
-
----
-# Ejemplo
-
-## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010
-
-
-```r
-guaguas %&gt;%
-  filter(sexo == 'F', anio&gt; 2009)
 ```
-
-```
-## # A tibble: 5,418 x 5
-##     anio sexo  nombre        n proporcion
-##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
-##  1  2010 F     Martina    4926    0.0187 
-##  2  2010 F     Sofía      4337    0.0165 
-##  3  2010 F     Florencia  3818    0.0145 
-##  4  2010 F     Valentina  3592    0.0137 
-##  5  2010 F     Isidora    3434    0.0131 
-##  6  2010 F     Antonella  3286    0.0125 
-##  7  2010 F     Antonia    3245    0.0123 
-##  8  2010 F     Emilia     3048    0.0116 
-##  9  2010 F     Catalina   2922    0.0111 
-## 10  2010 F     Fernanda   2532    0.00963
-## # ... with 5,408 more rows
+## # A tibble: 8 x 5
+##    anio sexo  nombre        n proporcion
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
+## 1  2010 F     Martina    4926     0.0187
+## 2  2010 F     Sofía      4337     0.0165
+## 3  2010 F     Florencia  3818     0.0145
+## 4  2010 F     Valentina  3592     0.0137
+## 5  2010 F     Isidora    3434     0.0131
+## 6  2010 F     Antonella  3286     0.0125
+## 7  2010 F     Antonia    3245     0.0123
+## 8  2010 F     Emilia     3048     0.0116
 ```
 ---
 class:middle, inverse
 background-image: url("img/textura_1.jpg")
 background-size: cover
 
-### Consigna: En Chile un nombre muy popular es Salvador por Salvador Allende ¿Con cuál opción filtramos aquellas filas que contengan el nombre Salvador a partir del año de su fallecimiento (1973)?
+#### Consigna: En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende. Si quisieramos conocer el nro. de ocurrencias de dicho nombre durante su mandato (1970-1973) ¿Cuál opción elegiríamos?
 
 ### Opciones: 
 
 ```r
-a. guaguas %&gt;% filter (name = "Salvador", anio &gt;=1973)  
+a. guaguas %&gt;% 
+      filter (nombre = "Salvador", anio &gt;= 1970, anio &lt;= 1973) 
   
-b. guaguas %&gt;% filter (nombre == "Salvador", anio == 1973)
+b. guaguas %&gt;% 
+  filter (nombre == "Salvador", anio == 1970 , anio == 1973)
 
-c. guaguas %&gt;% filter (anio &gt;= 1973 &amp; nombre == "Salvador") 
+c. guaguas %&gt;% 
+  filter (nombre == "Salvador", between(anio, 1970,1973) 
 ```
 
 #### ➡️  Recuerda, si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
@@ -320,11 +328,24 @@ c. guaguas %&gt;% filter (anio &gt;= 1973 &amp; nombre == "Salvador")
 ## La respuesta correcta es la c
 
 ---
+## Ejercicio combinando `select` y `filter`
 
-background-image: url("img/livecoding.jpg")
-background-size: cover
-class: center, middle
-# 🔧 DEMO 💻
+#### Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces:
+
+--
+- es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
+
+--
+- filtrar por el nombre Gabriela a partir de 1940 hasta el año 2019 para comparar la ocurrencia de cada año
+
+
+#### Por favor, completa el ejercicio de acuerdo al objetivo planteado:
+
+
+```r
+guaguas %&gt;% ----(---, nombre,--- ) %&gt;% 
+            -----(nombre == ---- ,---- &gt; 1940)
+```
 
 ---
 
@@ -352,7 +373,6 @@ class: top, center
 "ratio": "16:12",
 "highlightStyle": "solarized-light",
 "highlightLines": true,
-"countIncrementalSlides": true,
 "slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>`"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
