@@ -53,9 +53,9 @@ meta() %>%
   meta_name("github-repo" = "patriLoto/rstudio_certification2020") %>% 
   meta_social(
     title = "Herramientas útiles para manipular datos con el paquete dplyr. ",
-    url = "https://github.com/PatriLoto/rstudio_certification2020",
+    url = "https://patriloto.github.io/rstudio_certification2020/presentacion_herramientas_utiles_para_manipulacion_datos.html#1",
     image = "https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/presentacion_clase_guaguas.png",
-    image_alt = "la imgen muestra un conjunto de herramientas, haciendo referencia al nombre de la lección:Herramientas útiles para manipular datos con el paquete dplyr.",
+    image_alt = "la imagen muestra un bebe que alusivo al nombre del paquete Guaguas.",
     og_type = "website",
     og_author = "Patricia Loto",
     twitter_card_type = "summary_large_image",
