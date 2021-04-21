@@ -62,7 +62,7 @@ library(guaguas)
 #### Consigna 1
 ``` r
 Si quisieramos seleccionar todas las variables excepto el sexo y la cantidad, ¿Cuál sería la opción correcta?
- Opciones:
+  Opciones:
 
 a. guaguas %>% select(sexo, n)
 
@@ -81,17 +81,18 @@ b- guaguas %>% select(!c(sexo, n))   CORRECTA
 #### Consigna 2 
 
 ```r
-## En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende. Si quisieramos conocer el nro. de ocurrencias (n) de dicho nombre durante su mandato (1970-1973) ¿Cuál opción de filtrado elegiríamos?
-## Opciones: 
+En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende.
+Si quisieramos conocer el nro. de ocurrencias (n) de dicho nombre durante su mandato (1970-1973) ¿Cuál opción de filtrado elegiríamos?
+  Opciones: 
   
 a. guaguas %>% 
       select (nombre == "Salvador", anio >= 1970, anio <= 1973)  
   
 b. guaguas %>% 
-  filter (nombre == "Salvador" | anio >= 1970 | anio <=  1973)  
+      filter (nombre == "Salvador" | anio >= 1970 | anio <=  1973)  
 
 c. guaguas %>% 
-  filter (nombre == "Salvador", between(anio, 1970,1973))    CORRECTA
+      filter (nombre == "Salvador", between(anio, 1970,1973))    CORRECTA
   
 ```
 
@@ -99,7 +100,7 @@ c. guaguas %>%
 
 ```r
 guaguas %>% 
-  filter (nombre == "Salvador", between(anio, 1970,1973)) 
+   filter (nombre == "Salvador", between(anio, 1970,1973)) 
 ```
 
 
@@ -110,6 +111,7 @@ guaguas %>%
 Nos interesa conocer si a partir de 1957 (año de fallecimiento de la escritora chilena Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces: 
 
 - es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
+
 - luego debemos filtrar por el nombre Gabriela a partir de 1957 para comparar la ocurrencia de cada año
 
 Por favor, completa el ejercicio de acuerdo al objetivo planteado:
