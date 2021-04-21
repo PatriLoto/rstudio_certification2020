@@ -1,15 +1,15 @@
 ---
 title: "`r emo::ji('hammer_and_wrench')` Herramientas útiles para manipular datos con dplyr"
-subtitle: "Certificacion Rstudio 2020"
+subtitle: "Certificación Rstudio 2021"
 author: "Patricia Loto | 🐦@patriloto"
-date: "2020"
+date: "2021"
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
     lib_dir: libs
     nature:
       ratio: "16:12"
-      autoplay: 40000  
+      #autoplay: 40000  
       highlightStyle: solarized-light
       highlightLines: true
       slideNumberFormat: |
@@ -35,8 +35,8 @@ library(guaguas)
 library(xaringanthemer)
 
 style_duo_accent(
-  primary_color = "#9CCFB1",
-  secondary_color = "#41b6a6",
+  primary_color = "#111111", #"#9CCFB1"
+  secondary_color = "#41b6a6",  
   inverse_header_color = "#2c204d", ##000000
   header_font_google = google_font("Montserrat", "500"),
   text_font_google   = google_font("Montserrat", "400", "300i"),
@@ -48,14 +48,14 @@ style_duo_accent(
 library(metathis)
 meta() %>%
   meta_general(
-    description = "Esta lección es parte de un curso cuatrimestral para estudiantes de Ciencias Sociales denominado **Primeros pasos en R para personas de Ciencias Sociales**. En particular, esta breve lección de 15 minutos es parte del módulo **Herramientas útiles para manipular datos con el paquete dplyr**.",
+    description = "Esta lección forma parte de un curso cuatrimestral para estudiantes de Ciencias Sociales denominado **Primeros pasos en R para personas de Ciencias Sociales**. En particular, esta breve presentación de 15 minutos es parte del módulo **Herramientas útiles para manipular datos con el paquete dplyr**.",
   ) %>% 
   meta_name("github-repo" = "patriLoto/rstudio_certification2020") %>% 
   meta_social(
     title = "Herramientas útiles para manipular datos con el paquete dplyr. ",
     url = "https://patriloto.github.io/rstudio_certification2020/presentacion_herramientas_utiles_para_manipulacion_datos.html#1",
     image = "https://github.com/PatriLoto/rstudio_certification2020/blob/master/img/presentacion_clase_guaguas.png",
-    image_alt = "la imagen muestra un bebe que alusivo al nombre del paquete Guaguas.",
+    image_alt = "la imagen muestra un bebe haciendo alución al nombre del paquete Guaguas.",
     og_type = "website",
     og_author = "Patricia Loto",
     twitter_card_type = "summary_large_image",
@@ -93,7 +93,7 @@ xaringanExtra::use_fit_screen()
 
 ```{r xaringan-tachyons, echo=FALSE}
 xaringanExtra::use_tachyons()
-xaringanExtra::use_panelset()
+#xaringanExtra::use_panelset()
 ```
 
 
@@ -112,14 +112,14 @@ background-size: cover
 
 ---
 
-class: top, inverse
+class: middle, inverse
 
 # Material
 
-###`r emo::ji("link")` https://rstudio.cloud/project/17826088
+###`r emo::ji("link")` http://bit.ly/leccion_dplyr_en_rstudiocloud
 
-
-
+<br>
+<br>
 ##`r fa("github", fill = 'black')`  http://bit.ly/material_dplyr_01
 
 ---
@@ -130,7 +130,7 @@ class: top, inverse
 ## **El operador pipe `%>%`**
 
 
-### `r emo::ji("arrow_right")` Y lo más importante permite concatenar funciones de dplyr.
+### `r emo::ji("arrow_right")` Y lo más importante es que permite concatenar funciones de dplyr.
 
 
 .footnote[Fuente: [R para Ciencia de  Datos](https://es.r4ds.hadley.nz/pipes.html)]
@@ -139,7 +139,7 @@ class: top, inverse
 
 #### Recordemos algunos operadores ya aprendidos que nos ayudarán en combinación con `select` y `filter()`
 
-
+### Operadores de comparación
 
 | operador | significado    | 
 | -------- | ---------------| 
@@ -148,37 +148,48 @@ class: top, inverse
 | >=       | mayor o igual  | 
 | <        | menor          | 
 | <=       | menor o igual  | 
+| !=	     | distinto a     |
 
-
+---
+class: inverse
+## `r emo::ji("bulb")`Breve repaso 
   
     
-#### Principales operadores lógicos para unir condiciones
+### Principales operadores lógicos 
 
 
-| operador | ejemplo | representa |
-| -------- | --------| -----------|
-|  &       | A & B   | A y B      |
-|  !       | ! A     | negación  |    
-                 
+### - **&** representa y lógico.	
+
+     Ejemplo: A & B, evalúa --> ¿Es verdad tanto A como B?
+
+### - `|` representa o lógico.
+
+     Ejemplo: A | B, evalúa --> ¿Son verdad una o ambas?	
+
+### - `!` representa negación. 
+
+     Ejemplo: !A,  evalúa --> ¿A no es cierto?
+        
+   
 ---
 
 class: inverse, middle
 
 .hand[<span style="font-size:60pt">¡Antes de empezar!</span>]
 
-#### - abrí la  `leccion_dplyR_01.R`
-#### - carga la librería  `tidyverse` 
-#### - carga la librería  `guaguas` 
+### - abrí la  `leccion_dplyR_01.R`
+### - carga la librería  `tidyverse` 
+### - carga la librería  `guaguas` 
 
 ---
-class:top, center
+class:inverse, top, center
 background-image: url("img/colin_maynard_bebe.jpg")
 background-size: cover
 
 # Dataset: GUAGUAS 
 
 .pull-left[
-  .footnote[Paquete: [Guaguas por Riva Quiroga](https://github.com/rivaquiroga/guaguas)]]
+  ####.footnote[Paquete: [Guaguas por Riva Quiroga](https://github.com/rivaquiroga/guaguas)]]
 ---
 ## Guaguas `r emo::ji("baby")`
 
@@ -212,7 +223,7 @@ select(dataset, variable1,variable2,... variable n)
 ```
 
 --
-#### reescribimos la sentencia utilizando pipe
+#### reescribimos la sentencia utilizando el operador pipe
 ```{r sintaxis_select2, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
 
 dataset %>%
@@ -221,7 +232,7 @@ dataset %>%
 ```
 
 #### - dataset: conj. de datos sobre el que aplicaremos la función `select()`
-#### - variable1 a n: variables a seleccionar del dataset
+#### - variable 1 a n: variables a seleccionar del dataset
 
 ---
 # Ejemplo
@@ -244,19 +255,17 @@ class:middle, inverse
 background-image: url("img/textura_1.jpg")
 background-size: cover
 
-### Consigna: Si quisieramos seleccionar las variables: anio, nombre y nro. de ocurrencias. ¿Cuál sería la opción correcta?
+
+### Consigna: Si quisieramos seleccionar todas las variables excepto el sexo y cantidad, ¿Cuál sería la opción correcta?
 
 ### Opciones:
 ```{r consigna_select, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
 
-a. select(anio, nombre, n)
+a. guaguas %>% select(sexo, n)
 
+b. guaguas %>% select(!c(sexo, n))
 
-b. guaguas %>% 
-      select(!c(sexo, proporcion))
-
-c. guaguas %>%
-      select(guaguas, anio, nombre, n)
+c. guaguas %>% select(guaguas, anio, nombre, proporcion)
 
 ```
 
@@ -264,7 +273,7 @@ c. guaguas %>%
 #### `r emo::ji("arrow_right")` Recuerda si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
 
 --
-## La respuesta correcta es la .hand[<span style="font-color:'#9CCFB1'">b</span>]
+## La respuesta correcta es la .hand[<span style="font-color:'#9CCFB1'">b.</span>]
 
 ---
 class: inverse, top, left
@@ -287,7 +296,7 @@ class: inverse, top, left
 
 ```{r sintaxis_filter, echo=TRUE, message=FALSE, warning=FALSE, results='hide', eval=FALSE}
 
-filter(dataset, condicion1, condicion2,...condicionn)
+filter(dataset, condicion1, condicion2,...condicion n)
 ```
 
 --
@@ -300,12 +309,12 @@ dataset %>%
 
 
 #### - dataset: conj. de datos sobre el que aplicaremos la función `filter()`
-#### - condiciones1 a n: condiciones o test lógico para el filtrado de datos
+#### - condición 1 a n: condiciones o tests lógico para el filtrado de datos
 
 ---
 # Ejemplo
 
-## **Objetivo:** filtrar los nombres de mujeres a partir del año 2010 (incluido)
+## **Objetivo:** filtrar los nombres de mujeres con n mayor a 500 entre 2010 y 2019.
 
 
 --
@@ -315,7 +324,7 @@ dataset %>%
 --
 ```{r filter_guaguas, echo=FALSE, message=FALSE, warning=FALSE}
 guaguas %>%
-  filter(sexo == 'F', anio>= 2010) %>% slice(1:8)
+  filter(sexo == 'F', n > 500, anio >= 2010, anio <= 2019) %>% slice(1:8)
 ```
 ---
 class:middle, inverse
@@ -327,30 +336,30 @@ background-size: cover
 ### Opciones: 
 ```{r ejercicio_filter, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
 a. guaguas %>% 
-      filter (nombre = "Salvador", anio >= 1970, anio <= 1973) 
+      select (nombre == "Salvador", anio >= 1970, anio <= 1973) 
   
 b. guaguas %>% 
-  filter (nombre == "Salvador", anio == 1970 , anio == 1973)
+  filter (nombre == "Salvador" | anio >= 1970 | anio <=  1973)
 
 c. guaguas %>% 
-  filter (nombre == "Salvador", between(anio, 1970,1973) 
+  filter (nombre == "Salvador", between(anio, 1970,1973)) 
 ```
 
 #### `r emo::ji("arrow_right")`  Recuerda, si tienes dudas puedes ejecutar el script y ver que resultados obtienes.
 
 --
-## La respuesta correcta es la c
+## La respuesta correcta es la c.
 
 ---
 ## Ejercicio combinando `select` y `filter`
 
-#### Nos interesa conocer si a partir de 1957 (año de fallecimieto de la escritora Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces:
+#### Nos interesa conocer si a partir de 1957 (año de fallecimiento de la escritora Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces:
 
 --
 - es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
 
 --
-- filtrar por el nombre Gabriela a partir de 1940 hasta el año 2019 para comparar la ocurrencia de cada año
+- filtrar por el nombre Gabriela a partir de 1957 para comparar la ocurrencia de cada año
 
 
 #### Por favor, completa el ejercicio de acuerdo al objetivo planteado:
@@ -358,25 +367,30 @@ c. guaguas %>%
 ```{r ejercicio_combinado, warning=FALSE, message=FALSE, results='hide', eval=FALSE}
   
 guaguas %>% ----(---, nombre,--- ) %>% 
-            -----(nombre == ---- ,---- > 1940)
+            -----(nombre == ---- ,---- > 1957)
 ```
 
 ---
 
 class: middle, inverse
 
-### Para aprender más:
+## Para aprender más:
 
-### R para Ciencia de Datos es un buen comienzo<br>
-###https://es.r4ds.hadley.nz/
+### R para Ciencia de Datos es un buen comienzo:<br>
+### https://es.r4ds.hadley.nz/
 
 
-### Documentación de dplyr tiene mucha información útil
+### Documentación de dplyr:
 ### https://dplyr.tidyverse.org/
 
+### Imágenes tomadas de:
+### https://unsplash.com/
 
 ---
-background-image: url(img/bebe_entero.jpg)
+background-image: url(img/bebe_riendo.jpg)
 background-size: cover
-class: top, center
-# ¡GRACIAS! 
+class: inverse, top, center
+
+.hand[<span style="font-size:60pt">¡GRACIAS!</span>]
+
+
