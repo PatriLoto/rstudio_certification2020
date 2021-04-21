@@ -118,22 +118,22 @@ Por favor, completa el ejercicio de acuerdo al objetivo planteado:
 
 
 guaguas %>% ----(---, nombre,--- ) %>% 
-            -----(nombre == ---- ,---- > 1957)
+            -----(nombre == ---- , ---- > 1957)
       
 ```
  #### Solución 3
  
  ```r
  
- guaguas %>% select(anio, nombre,) %>% 
-     filter(nombre == "Gabriela" ,anio > 1957) 
+ guaguas %>% select(anio, nombre, n) %>% 
+     filter(nombre == "Gabriela" , anio > 1957) 
   
   ```
  ### ¡Tené en cuenta!
   ```r
-# Si la consola muestra resultados sólo de algunos años, entonces recordá que es posible utilizar la función view() aprendida en la clase anterior para visualizar los resultados completos desde el año 1957.
+# Si la consola muestra sólo resultados  de algunos años, entonces recordá que es posible utilizar la función view() aprendida en la clase anterior para visualizar los resultados completos desde el año 1957.
 
-guaguas %>% select(nombre, anio, n, proporcion) %>% 
+guaguas %>% select(nombre, anio, n) %>% 
     filter(nombre == "Gabriela" ,anio > 1957) %>% view()
 
   
