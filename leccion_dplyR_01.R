@@ -8,13 +8,9 @@
 
 install.packages("tidyverse")      
 
-# el paquete devtools es necesario para instalar el paquete guaguas ya que no está disponible en CRAN
+# Guaguas es el hermano latinoamericano del paquete babynames
 
-install.packages("devtools")  
-
-# hermano latinoamericano del paquete babynames
-
-devtools::install_github("rivaquiroga/guaguas")  
+install.packages("guaguas")  
 
 
 ## SEGUNDO PASO: Llamar a los paquetes anteriormente instalados
@@ -45,14 +41,13 @@ select ()
 
 filter ()
 
-arrange()
 
-## Importante: Las sentencias select y filter toma un dataframe o tibble como primer argumento y devuelve un dataframe o tibble como salida.
+## Importante: Las sentencias select y filter toma un dataframe o tibble como primer argumento y devuelven un dataframe o tibble como salida.
 
 
-##  En la próxima clase aprenderemos las funciones de dplyr para agregar nuevas columnas:
+##  En la próxima clase aprenderemos las funciones de dplyr para  ordenar y agregar nuevas columnas:
 
-# group_by(), summarise() y mutate()  
+# arrange(), group_by(), summarise() y mutate()  
 
 #-------------------------------------------------
 
@@ -82,7 +77,7 @@ guaguas
 ## reescribimos la sentencia utilizando el operador pipe:
 
 #        dataset %>% 
-#           select(variable1,variable2,... variablen)
+#           select(variable1,variable2,... variable n)
 
 # - dataset: conj. de datos sobre el que aplicaremos la función select()
 
@@ -102,7 +97,7 @@ guaguas %>%
   select(-sexo, proporcion)  # también puede utilizarse el símbolo ! para excluir determinados campos
 
 
-## Ejercicio: ¿Con cuál opción seleccionamos todas las variables excepto el sexo y cantidad?
+## Consigna nro.1: Si quisieramos seleccionar todas las variables excepto el sexo y la cantidad, ¿Cuál sería la opción correcta?
 
 ## Opciones:
 
@@ -140,20 +135,14 @@ guaguas %>% select(guaguas, anio, nombre, proporcion)
 
 # Algunos operadores vistos en las clases anteriores que nos ayudarán:
 
+# operadores de comparación:
 # ==
 # >
 # >=
+# <
 # <=
-# !  
 
-
-## Objetivo: filtrar los nombres de mujeres con n mayor a 500 entre 2010 y 2019.
- 
-guaguas %>%
-  filter(sexo == 'F', n > 500, anio >= 2010, anio <= 2019) 
-
-
-# Recordemos los principales operadores lógicos para unir condiciones:
+# Principales operadores lógicos para unir condiciones:
 
 # &	Ejemplo: A & B evalúa --> ¿Son verdad tanto A como B?
 
@@ -163,8 +152,14 @@ guaguas %>%
 
 
 
+## Objetivo: filtrar los nombres de mujeres con n mayor a 500 entre 2010 y 2019.
+ 
+guaguas %>%
+  filter(sexo == "F" & n > 500 & anio >= 2010 & anio <= 2019) 
 
-## Ejercicio: En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende. 
+
+
+## Consigna nro.2: En Chile un nombre muy popular es Salvador por el Presidente Salvador Allende. 
 
 # Si quisieramos conocer el nro. de ocurrencias de dicho nombre durante su mandato (1970-1973) ¿Cuál opción elegiríamos?
 
@@ -187,10 +182,10 @@ guaguas %>%
 ## Ejercicio combinando select y filter
 
 
-## Nos interesa conocer si a partir de 1957 (año de fallecimiento de la escritora Gabriela Mistral) aumento la cantidad de personas 
+## Consigna nro.3: Nos interesa conocer si a partir de 1957 (año de fallecimiento de la escritora Gabriela Mistral) aumento la cantidad de personas 
 ## llamadas Gabriela, entonces:
 
-# 1- es necesario seleccionar las variables de interés: nombre, cantidad, proporción y año
+# 1- es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
 
 # 2- luego debemos filtrar por el nombre Gabriela a partir de 1957 para comparar la ocurrencia de cada año
 
@@ -198,14 +193,14 @@ guaguas %>%
 # Por favor, completa el ejercicio de acuerdo al objetivo planteado:
   
   
-`guaguas %>% ----(---, n, proporcion, anio) %>% 
-            -----(nombre == ---- ,---- > 1957)`
+`guaguas %>% ---- (---, nombre,--- ) %>% 
+            -----(nombre == ---- ,---- >= 1957)`
 
 
 ## Resolución: 
 
-guaguas %>% select(nombre, anio, n, proporcion) %>% 
-  filter(nombre == "Gabriela" & anio > 1957) 
+guaguas %>% select(nombre, anio, n) %>% 
+  filter(nombre == "Gabriela" & anio >= 1957) 
 
 
 
@@ -214,7 +209,7 @@ guaguas %>% select(nombre, anio, n, proporcion) %>%
 # los resultados completos.
 
 guaguas %>% select(nombre, anio, n, proporcion) %>% 
-  filter(nombre == "Gabriela" & anio > 1957) %>% view()
+  filter(nombre == "Gabriela" & anio >= 1957) %>% view()
 
 
 # Conclusión: se observa un leve aumento en la cantidad de guaguas llamadas Gabriela a partir de 1957 
