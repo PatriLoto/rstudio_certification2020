@@ -50,7 +50,7 @@ Los estudiantes han visto en las clases anteriores manejo de la consola, vectore
 ``` r
 # 1. Instalación de las librerías
 install.packages("tidyverse")
-devtools::install_github("rivaquiroga/guaguas")
+install.packages("guaguas")
 
 # 2. Carga de las librerías
 library(tidyverse)
@@ -110,7 +110,7 @@ guaguas %>%
 ```r
 Nos interesa conocer si a partir de 1957 (año de fallecimiento de la escritora chilena Gabriela Mistral) aumento la cantidad de personas registradas con ese nombre, entonces: 
 
-- es necesario seleccionar las variables de interés: año, nombre, nro. de ocurrencias
+- es necesario seleccionar las variables de interés: año, nombre y nro. de ocurrencias
 
 - luego debemos filtrar por el nombre Gabriela a partir de 1957 para comparar la ocurrencia de cada año
 
@@ -133,8 +133,8 @@ guaguas %>% ----(---, nombre,--- ) %>%
   ```r
 # Si la consola muestra sólo resultados  de algunos años, entonces recordá que es posible utilizar la función view() aprendida en la clase anterior para visualizar los resultados completos desde el año 1957.
 
-guaguas %>% select(nombre, anio, n) %>% 
-    filter(nombre == "Gabriela" ,anio > 1957) %>% view()
+guaguas %>% select(anio, nombre, n) %>% 
+    filter(nombre == "Gabriela" , anio > 1957) %>% view()
 
   
 #  Conclusión: se observa un leve aumento en la cantidad de guaguas llamadas Gabriela a partir de 1957 pero el boom se da a finales de la década del 80 y principios de la década del 90.
